@@ -1,0 +1,25 @@
+{
+  "name": "analytics-dashboard",
+  "version": "1.0.0",
+  "description": "A Analytics Dashboard for a User Interface",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelAdamBerry/dashboard.git"
+  },
+  "author": "Michael Adam Berry <MichaelAdamBerry3@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MichaelAdamBerry/dashboard/issues"
+  },
+  "homepage": "https://github.com/MichaelAdamBerry/dashboard#readme"
+}

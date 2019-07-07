@@ -1,0 +1,265 @@
+<html>
+  <head>
+        <meta charset="UTF-8" />
+        <title>Analytics Dashboard User Interface</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.dom.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.sound.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/bcb645cd20.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+  </head>
+    <body>
+    <div id="body">
+    <header>
+        <div class="header-top-container flex space-between">
+        <div class="logo"><h1>Logo</h1></div>
+        <div id="user-info">
+            <span class="mail-icon">
+            <i class="fas fa-envelope"></i>
+            </span>
+            <span>
+            <i class="fas fa-bell"></i>
+            </span>
+            <span>
+            <i class="fas fa-th-large"></i>
+            </span>
+            <span>
+            <i class="fas fa-chevron-down"></i>
+            </span>
+            <span class="user-name">
+            </span>
+            <span class="avatar-container">
+            <img alt="user-avatar" width="32px" height="32px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAIAAAAlC+aJAAAeOklEQVRogV16WYwb57ll7axikUWySDbJbrK72Zuk1h4ttiPZshM5doIEfrA9vg4SzGR7yIYgF3mZi0xm8pT3PBmZJwN3HARwHAfBtQdOlMiW5YbVUlpytyX1TnZzJ4vF4lILa5uHk9Tomg9Cq5ss/v/3f9/5zjnfT777H//X933f9w3DMAyj1Wqtra3t7Ow89dRTBEHE4/FwOKzrejgc9n3fcRyGYUiSHA6HgiBUKhVFUQzD+OSTT7797W/H4/FkMum6Lsdxd+7cOTg4SCaT+/v7LMvW63VBEL74xS/m83lN0wiCyGQynucZhkFRVL/f39nZ4TjOtu1utytJEsdx4/HY932SJGmapiiKZVnTNHmetyzL87xGozEcDiORCEOSJN5K07Tv+5ZlDQaD7e3t5eXlbDY7HA5DoZCiKJqm2bYdiUSGw2Gv1xMEgWXZRqPR6/VM0zx79uzh4eF4PN7Z2ZEkaWdn5+DgoFAo/OY3v9ENnaZoURR5nv/4448HwwFBEGJYPHv27MLCAjZg23Y8Ho9EIgzDIAQkSRqGEQqFut2uKIocx2maZprm5ORkLBaLx+OZTGY8Hne7XcZ1XYIgBoNBs9n85JNPKpUKQRDT09OapjmO47rurVu3bNtOJBKVSoWm6VAoFIlESJJkGMayLFEUc7kcx3GSJCmKMh6PLctaWVnZ3tlOxBOe5/EhPhwOkySp67rneWEhjKDevHlzPB4//vjjsiz3ej3HcdrtdjQaZRgmHo/ncrlYLDYajTY3N2u1mm3btm0zDON5HsuyhUJhMBiMx2NZlpkPP/zQMAxd10VRJAjCcRxRFGdnZ+fm5kiSHI1GHMcxDBMKhbB713UlSQqHw/F43LZtgiDG47GqqhMTEwzDcBz3t7/9zXEcMSziVGmaVlU1FAqJomhZFkEQDMPYti1J0q3VW71e79VXX0V+9vv98XjsOE6tVtvb2xMEgaKoaDS6tLSUyWTefffdTqdz9uzZbDZL07QoipFIpFKp0F/76tcmJycty9J1PRaL4c+VSqXZbIqiSFFUKpXiOG56epqmadu2HceZm5uTZRmnEYvFQqGQJEkkSaqq+uDBg7feesvzPN/3Pc+jKIqmaZZlaZr2PI8gCPyeIAjLsgRBqDfqzUazWCxWKhVZlq9evTo5OZnL5WRZdhwnHA4LgpDJZCRJ6vf7GxsbxWJxbm6OZVmcNoLLdDqdg4OD4XCIQyBJcmpqan9/X1VVlmXH47Ft25qmaZrGsqwoiqgt27ZZlu12u7VaLZFItNttkiSvX78+HA4pirIsi+M43/c5jovH46qqDoaDEBcSBAHJwPO8pmmpZGpzc1OWZRzpysoKStyyLJqmY7EYTdNbW1v9fr9UKqGQBoOBaZokSXa7XVVVGZwdkgSxGY1G3W63UCi88soro9Go0+lYltXpdHK5nO/7q6urBEHkcrlms+n7/sTExP7+PkVRh4eH9+/fb7VasViMYZhLly5NTEzkcrlwODwYDBzHGY1GpVKpXC6rqop6YFkW+/xo5aNLn7/UbDZJkoxEIpOTkxzHsSy7u7tbrVYVReF5Hnk/GAz29/er1Wqv1xuNRqqq0pO5qb29vfF4TFGU53mCIFiWValUJEm6ePFiu93WNM2yLMuyWq2W53m9Xq/RaIxGo0wmY5rmYDDgeR44u7W1hZx59tlnjxw5kslkOI6LRCIcxwmCIEmSLMuxWIwkScuybNvmeX48HodCIcInKIp6/vnnFxcX0+k0SZKmaSLH4vH4wsLC6dOnBUEIh8P1ep0gCJZlB4OB67qzs7P0f/uv3yJJslwu67ru+z7LsrZtI51qtRqgqlKptNvtZrOJmk6n077vK4oyHA5Zlg2Hw1NTU+Px+O7du7qhnz9//vTp04VCAVCLJmNZFoCSoiiKopCWo9HI9/1wOGxZVrvTZhgmkUhQFLWxsZHJZGZmZmzbFgRhPB4LgsAwDN6MVWWz2ZmZGYIgGJQjTdPVahV4HI/H0+m0pmlIEtRfOBzOZDIURem6LkmS4zhoQ51OZ3d3N5VK+b5PEARBEPPz87Is9/t927YNw0gmkxzHjUajcrns+/54PE4kElNTU7quu67b7/d7vV4sFjMMY29vL5fLCYIwMzMzPT0dDod7vV6328VZWZYVCoUMw5iYmNjd3T127BjHcaFQiBEEQdM0SZJ6vV673TYMQxTFZDJJkuTBwcHh4WE2mz137hxaNcuys7OzjUYDSdXpdFCvlUolFAoRBMGx3MzMjOd5oVDI932e50ejEUVR6XQaVUuS5GAwyOfzm5ubgF1UiOM4uq7btq0oytLSEkmS1WrVNE3f91VVReFlMhnkM6CsVqvV63VG/+drOBy6rptKpTKZzHA4nJ+fZ1l2OBxubW0ZhpFOp0Oh0KlTpxzHWVpa2t3dDYfDNE2XSiVZluv1OsdxjuNIkkRRVKvVmpqaOnbsmGmaBEHQND0ajTzPa7VamqahbFKpVL1epyhKEATDMDzPy+fzsVjs1q1bU1NTqVTKMAyO44DCrVYrHA632+1Op4OcpChqZmam1+vRFEmh2EVRXFpaymaz8XhcFMVQKDQ1NZXJZIDuuq6fPHkykUggF5EwnucNh0NN04bDYTKZBPnxff+NN95YXV3d3NxE02g0GtVq9de//vXfrv/t4YOHw+GQYRjXdQ8PDwGXKAxBEHzfj0Qi3W4X9TYYDDRNc13XdV2apuv1+nA45HmeJEmWZVVVHY1GjOd5R48eJQgiEoksLS0ZhoHqTCQSgiCYplkoFKrVqqqqSIBUKlWtVvv9PkEQmqYpioJSAwvAgr7//e8/fPhwPB4PBgOsY21t7ezZswzDFIvF7e1tZALDMEh0hmEIgqhWq5OTk9lsdjQakSQpy7IkSTzPZ7NZ13VLpRLHcYlEQlXV6elppFM8HqdjUnw4HBIEEYvFZFk2TdN1XVmWB4MBAAuMCo1sYmJC13WsEnyw3+8bhnHkyBFRFNFiXn755ddee63VamUyGcdxMpkMyndnZ2c0Gt27d89xnOnp6YmJiVgsJopio9FATxAE4cKFCyRJPv300+fOnTt16tTp06ez2ezi4mIul5uZmblz5w4gKJ1Og4pmMhlG1/V+vy/LMsdxuq5TFIXCMk0TpynLsuu6vu9Ho9Hr169PTk6KomiaZr1et22bJMlCocDzvOd5c3Nz+Xyepukf/ehHNE1vbm7G4/FSqaRpWq1Wm52dTaVSoVCo3W4TBJFOpxmGKZfLwEBwKsBLoVDQdZ1hGFTjYDBAe0kmkysrKzMzMyBm4XCYIAj6uS89BzpgGMbp06fRB3iej0QiLMveuXOn1+tpmobPLywsgPSCh4qiGI1GAW3ogCzLzs/PZzKZSCQSj8c9z+t0Ov1+X5KkSCQCelMsFnGqoKjtdts0zVgsJkmSKIr9fn80GjmOUy6XDcOoVqsovHq9fvv27fX19VdffXV6ejoSiRiGEYlEmP39/VgslkqlJicnNzY2WJYFkZZlGQ2/Xq/TNH316tVarQa8q9friUQiHo+3Wq1Go7GwsJBOpxVFIQgikUgcO3Zsf39/MBgkEglUCypvcnIS3QNdXBCEg4MDhmGGw+HExMT58+crlQrYm6Io3W5X1/W7d++GQqE///nPsVis0+mUSqUTJ05A6xiGEY1Gq9Uq/Z1vf7dYLOZyOVEUbdsWRTEcDkuSBMaWy+VIkpyfn89ms2jm4XAY70wkEvl8nuf5lZUVSZJGo5GmaTzPLy8vRyIRgiAURXnsscc8zxuPx+ChU1NTgiDwPO84DkVRg8Hg4OCg2WwCRZLJZKfTOX78+Oc+97mlpaVCoSDLci6X0zTt3r170Wh0YWEBkADurCiKruv08eXj4/HYdV00jr29vXq9rmlaqVSanJxMJBIPHz4EJ4N09H0/lUo5jlOtVpEVtVqt0+lompZIJFiWXVhYCIVCHMc1m83d3d29vb1mswlyHg6Hl5aWwBdt21ZVdTAYRKPRYrHY6XR4npdl+YUXXgCtFAQB+4RGa7VajuM8+eST8/PzoVBIVdVGo7G/v09fvnTZ8zzbtk3TlCQpFAoF5NlxHNCB9fX1er1eKBQAf7qugzbSNN1qtfr9fjKZTKVSyWQyGo3Ozc2NRiNd13d2dq5fv+55XrlcRrpLkgTaOxgMDMMYDoemaU5PTwNCms3miy++iGiOx+PhcGhZViQSsW07HA5//PHHX/3qV69cubK4uDg/Py9JUqPR2NraYk6cOFEul8fj8ezsbKlU0nV9NBqJoliv1yORyO7uLhLj/v37iD2UO7DMdV1In9OnTy8tLfm+D/lH0/Ta2lq5XL548eJgMEgmk4PBoNPp3LlzhyAIWZYBAwzDgHWSJAm8ikaj8XgcBN73/UQiEQ6HIVNN01xcXAyFQqlUqlarCYJw9uzZ/f19emlxCRgMZZzJZCzL2tvbazQaly9fTqfT5XIZrQpMbnt7u1arYc+mad64cWNmZuall14KhUKu62YyGRymqqqlUun48ePz8/NLS0vFYtG27VQqBXYtiuJoNEKMW63WYDCQZVlRlNFotLCwYJqmIAgcx5mmOR6Pt7e3b9++/c1vflOWZYIgVFVFM4WcoidzUxRFkSQJQrG5uVkqlVRVRS/Udf3ChQvwOYCJQOh+v++6brvd5nn+xIkTly9fhuwAsQmFQjRNI09ardbq6uq1a9f6/f7Ro0ehhFzXxQaw1U8//bRYLOq6fuPGjXg8Pjk5ybKsrusPHjy4efPmv/+ff//Xn/7riRMnBEHo9/utVgu1J8vyeDwm/+f/+F+j0aharXa73WQySVFUp9PpdrswGkAe4aN0u12KovAxQRASiQSSNZ/PLy8vI4VUVQ2oKHL98PDQtm20SFmWeZ6vVqskSYJIt9vt+/fvx+Pxo0ePDgYDURSBsARB1Go11Hqn0yFJUpKkH/7whxMTEyCquVyu2+2++eab5G9e+9+CIAyHw9dffz2VSrEsOxqNUGH9fn8wGITD4Wg0ChcADgreBn5h23a/31cU5cyZM8ePH5+YmFhbW4vFYlNTU7IsD4fDN998s9frnTlzJpVK8Tzfbrd7vV44HFYUpVwu8zx/cHDw2GOPYbc0TY/HYzhUcG4C+Xbr1q18Pj8/P0+SJHSzqqoURTEsy/Z6PVEUu91uPB5HPUABT05OGoYBWYPqIQgCueQ4DsuyEFCRSITn+bt3725tbS0sLDSbzWeffbbX67EsC3FcKpWgdfr9PkBiPB5Xq1VIpfPnz+fzec/zXNeNxWK2bcPUiEajrusahpFKpSzLkmWZJMlEItHpdGiaNk0zmUxqmka/8l9e8Tyv2+2urq4CAQmCmJqa6na7iqLkcjmcZrPZlCRpdnYWPWs4HEJV6LpO03Q6nQ6Hwyjcubm5kydPdrvdnZ2dfr8fjUZTqVSj0VAUBU4edNlwOEyn07qunzlzZmJiAukKls7zPMQa+K/jOHt7ezc/uvncc88VCgVQ13Q67Xkex3GMpmmbm5s7OzuJRILnedu2KYrq9Xq2bXMcd//+fZZlCYKQJOnJJ5/sdDqGYeAccNDgYb7vZzIZJF6j0bBte2ZmZjQa7ezswGWpVCrVapXneVhMw+FQlmUUEgAD/9brdcCRbdvYZ7fbbbfbh4eHnzv7ub29vQcPHoC3h8Nhx3FommbW19fBLvL5vCRJqqru7OxAccOEA7bk83mO4zKZTKvVwqLxgqQcDAa+7zcaDYqiVFVtNpvFYrFQKORyuXfeeadSqUDRYvWxWAz+H9JmPB7fuHHDMAxQ2kqlAvcJ1ahpmiiKV69ejcfjjuPAR8xms91u17Isx3EYuIWzs7NAlWw2C+MJLSYUCk1MTHieR9P0+vo6wASeKTIV1QajAQmm63qj0SgWi4lEIhaL/eAHPwCeWJZVKpWgp9LpdCQS6fV6hmFcvHix0+mgAaNwAzULuTw1NfXEE0+wLLuysuL7/uXLlzVN831f07Rut8vAQy8UCqZpbm9vN5tNx3GuXLkyMTFhWZaiKODVnU7n5s2b1Wr12LFjkUjE931gnCAI6HEURZmmOTU1RVHUxYsXG42GLMuI67Fjx0iS7HQ68Xi8VqtxHIfAMwwzOzv75JNPapr22muv5fP5Xq8XCoXq9TrLsidOnEgkEm+//fadO3fi8Xg0GlUU5dVXX4WNhwQul8vMU089xbIsRVGGYTiOMxgMdnZ2jhw5ApzK5/MwM06fPo19LywswI5HAdTr9X6/jySen5+/fPky/AschSzLCBVMQoqifN+Hs2sYhmVZP/nJT0zTPHXq1MPNh67rRqNR3/dho8/Ozq6trR05cqTRaLz99tu5XO7LX/6yJEnQsXBiotEoRRCEruuVSmVvbw+JVSqVms2mZVnJZBLhB/X9+9//funSJRABMAKWZVOpVKFQyGaz8/PzW1tbGxsbv/rVr1qt1rPPPovadRwH5gqUgCzL2WzW931Jkn76059GIhHTNMERFEU5ODioVCoXLlw4c+aM4zhAMJIkY7HYM888k8vlFEWpVCpwEuDaM6urq6ZpIkfhbp85c+bu3bvLy8utVksURUDeX//61xdffBEdHpoYJoLjOHCEGo3Gw4cPf/7zn2Oiw7LsV77ylZWVlZs3by4vL6fTaUAZmsDFixfPnDnT7/f7/b4oisPhkGVYWFKKonz66acURcEZQWt76aWX5ufnd3Z20ApIknRdl2VZWZaZra0tQRDm5+dd10W0UqlUuVxuNpuKorAsC3v585//PJiwbduxWAycB91AVdXDw8N33nlndnYW2g9zBl3Xn3jiicXFxddff71UKs3Pz6Nann/+ediJKOhut3twcBCPx0FLBUF455133nvvveXlZbQqGKztdhvEG0MGaM5+v8+sr6+fPHkyFotFo1HHcaDoi8WioiiLi4ulUqnVaqHmSJKEqw4SZlkWnCZVVfv9/tTU1Gg0gqJAfXMcB9n6s5/97N133+12u8Vi8fz586CrBEFAakaj0cPDQ0VRJicnIb6RUaVSaX19PZvNplKpDz74QBRFlBzmAbArLcuiZ6Zn4vH42bNnER5RFIHfEMedTgfmR61W+/TTTwuFQrlc7vV6h4eHe3t7SPGgJ/A8jwGMqqrf+c63A9NqOBzatg03G0+Gj4JOhF755ptvchwH0gabJxqNAq8ajUan07FtG7Y7x3GWZfX7fZqmz507xxAEgbOABxiNRgVBUFXVsqxcLgcHV1EUz/OWlpZardbGxoZt2/C+BUFAQ0gkEuPxOBKJgFmsrKw0my2Mler1umma8Xgc+fbGG29cuXJlamoKQwm0Qp7nPd8jCAJaEY4DmrHruhjJ1Wq1jY2NWCyWy+VomnYc58KFC08//TQ9Mz0bjUZ7vR5BELZt1+t1wzBgkuq6jgRtNBr9fr/ZbN6+fZthGKAhkBg8AvY3eAtFUbOzs6dOnZqeni6Xy++9996pU6dgQm5vb09PT6NR4sC73a7v+zdv3nz//ffj8TiehkzG6YVCIQxBMCMNhkuqql69ejWZTDLFYjEajWKWitXDmQFbsm271+tNTEykUqnr169j+oIxIxQziCqIXTB6wvwPimd5eXkwGGBUxfN8LpeDdhuPxyzLkiSZTCZVVZUkCXkILY/5F+gaAooE8zwPPUQQhHfffTefzzMvvPACPoDaQn7XarXd3d1MJpNOp2OxGM/zf/nLX+CEIUj4lyRJzNTwA+YjEISSJJmmmc/n4XZhmAtjAiEYjUaCIMRiMQg9hmEwd0GFYOoTjUb7/T7sTShjGJj4zcbGxt27d5nJyUnMZkByRqNRMpmcmJh4//3319bWvvWtb01OTkKF2LYdjUYf3QOWDkWKIS58QsdxIMNFUcRQFYcGmQt2yDAMUNuyrPv377uua5qmruuCILz88svY9srKCsIBYwFdKBKJWJYFeL19+zbFMAx2j1c0Gk0mk7Isz87O2radzWYlSfrkk0/QfT3PC4KNDWD1qEWkHHiYoigYdcGFR+PDUkzTBB2EChNFcX19HcP37373u6lU6t69e5lMZm9vD50BgyykE6IMqfSPWwiB04/FYT/orOPxGFO9Dz/8EOgGQMAhYPUURWE/4JLokahmmqbxqECmSJJkWRZFUa7rWpYVDocjkcjq6urYHkejUUii2dlZTdM++OCDpaUl0Ltg3myaJrIRe/gHEcZzkRudTmdra2t9fX1ra6terx8/frxcLmNGBDMLi/vMBqCkXNfFSY5Go2BWgFQGajEMQ9M0pCZN07h24Xne1taWwAv7+/v9fl8QhL29PYqi9vf3DcMolUrQq5BZIO2Q/LhaUKvVmD/+8Y88z6NKWq0W2CXmSLhQcufOHYxPoHuw3EAGPJpCCLbv+7hVgCzHNlAGsJ4APtjSwcEB4DubzbZarWq1ms/nm83m9PR0qVRKJpOYPwDEwLKgUgA5juMw165d43kew0k8F/at67q1Wo1l2e3t7VAohEIPbsGg6LH64IXMRrWNRqN4PK5pGoSYYRgoA8zoh8MhFoRugKMDbhIE8dRTT62trUWj0Y2NjUgkAkrmeV6QQrjjIoqiYRgMJg71ev38+fPxeBx/hrOXTCY9z2u327FYDKeGz+OORxB7tB70HYb5x9SQpmnXdVHZo9EIMSMIwnXdYIzyqC1gGEaxWESvxc0dtHk8GXYlvgiQgHj5vs/guRheQGKjdnHDpdVqIY/RpwAIj+bMZzpDwA6ACii+4P3B/RV47ph7d7tdgiAqlcqVK1eOHj36+9//Hjbw2toauhu+CPHCsePh/8gC6Mbp6enp6WnHcYBNSDXDMPb39zFPFgQB02w8BcsKWhhqGisGUQsqPnhDsAjMOZEVgiCAaf/iF784e/ZsNBr90pe+hKhjn9Ab7j9fwZUXTL1ommZwNwXdZDwedzodRVEw4QuFQriKBO3bbrcB3kEwguk8NhAgMrA4KNzg9g2WjuxCwSiKcu7cubm5uccff/wb3/jG1772te3tbTAReBaRSKRWq2FaFVzh+U9IiJk2QRAPHz48ODhot9uRSGRubi6TyRw9ehRIBwYLI+RR7hD8HLwQJKAWUjGgScFu0bNxyWlra+utt95yHAcz47fffntvbw+Bh4z2fd8wjXqjjqtBQe///+i3uLiYyWSmp6cVRXnw4AHGKqVSCawTNQfPA+3jMxsI/ouMBOdBbmADwXuCU0KdwEp65plnVldXjx49eu/ePaAf3u953sHhQa1e4zju3/77v/35vT9D7gZZhEOmKIp57rnngNaYxcqy/PDhQ0VRSqXSsWPHMNLSdT1oQAjAZxhRII7RcWzbxs88zz8ae3wEvhjMAVVVfcLPZrO4MLe7t0sQBB/iX3rppWeeeeb06dOLi4umab722muw9YN7AkHUGFxv8jyvUCgAOvP5/LVr13q93ubmJkLlOA5mkriEFizo0ZUBNPFo3M6EWHt0A0inAHwxZCAIolAo3Lt3zzCMf3nlX77+9a8fOXJkZmYGcHzt2rXf/e53f/jDH4J7E0EnRaYx165dW1xcpCgKf9vb25MkSRCEQqEQjEGRD7hsRvyTSAcxeLQAEF34Npi0ooQC7o2+yzAMaFy73WZo5sc//rFhGLV67Xvf+978/PzGxsZvf/vbGzdufPTRR4ZpSFEJ9AGeEpaK53iex8Aqy+VylUpF13Xo2mKxSBBEqVRCNqNJBYQEq3yUlgaHgC1h0ETTNOgk8Z8lBFaA9mRZluM6Dx48EAQhlUz98pe/vHnzpuu5ETGCuYQsyxRFQfEC/pFFAGWWZRme51ut1oMHD4C73W53amrqC1/4AmgjFgoBBYAnHqE9yJlHsRkIk0gk4DjAPwxKJah4juPgWmuaRpEUAoTRIG7mPdprMWbGdwWvANAYmqbBSQzD6PV6J0+eFAThT3/6E26rQJfgdgzDMCBCjzbaIDGC2KBvaJqGt+FPwQqCfux5Hi4Rg1aEQqFOpwNLBj0uODp0vaB5BU0Tz6QIgsCy8BTcgNB1vdVqfeYR4DlBf300rkFrw1+HwyGEbGBiB2CFpXuel8lk9vf3cZkSew4aCJYbNEQs/TOoTf5TS1HAV/DkaDTabrcHgwHuruFmEia1WAfcgc/kA/FPbUAQBPDHsixVVYMTCwoATQCLA1dD9sM/BsuAxwxG82jZIJ2Ccgp6GSXLsqqqCAwmpMhCfDIAFhw3z/OmaeJ8g9UHz8Xv8WVbW1vQGMFugxLEUWBwDbMIAICih/DgOA5fCuQImDaSJ0gwz/Mo27YxSUfOzM7OXrp0CZfqYWHjoQECWpYV5GKwbkBy0KRs297e3g4ac/DOoDoJgoBCb7VaEIPoU0geGBDIW+wEc60gXgE3cV33/wG0OgyZRkfZ+QAAAABJRU5ErkJggg=="/>
+            </span>
+        </div>
+        </div>
+        
+        <div class="header-bottom-container">
+        <div class="site-margins flex space-evenly">
+        <a class="selected" href="#">Dashboard</a>
+        <a href="#latest-projects">Projects</a>
+        <a href="#">Invoices</a>
+        <a href="#">Settings</a>
+        </div>
+        </div>
+        <div class="header-current-location site-margins">
+        <div class="view-type">Overview</div>
+        <div class="flex space-between">
+            <div class="view-title">Dashboard</div>
+            <div class="view-path">Home/Dashboard/<span>Overview</span></div>
+        </div> 
+        </div>
+    </header>
+    
+    
+    <div id="main" class="site-margins">
+        <div class="flex space-between tile-a">
+        <div class="graph-a">
+            <div>
+            <h3>BUDGET</h3>
+            </div>
+            <div class="budget-value">
+            <div class="flex"> 
+                <p class="col-gray-lighter"></p>
+                <button class="pill"></button>
+            </div>
+            
+            </div>
+            <div class="icon">
+            <i class="fas fa-dollar-sign"></i>
+            </div>
+        </div>
+        <div class="graph-a operations-value">
+            <div>
+            <h3>
+            OPERATIONS
+            </h3>
+            </div>
+            <div class="col-gray-lighter flex">
+            <p></p>
+            </div>
+            <div class="icon">
+            <i class="fas fa-tools"></i>
+            </div>
+        </div>
+        <div class="graph-a">
+            <div>
+            <h3>REQUESTS</h3>
+            </div>
+            <div class="request-value">
+            <div class="flex"> 
+                <p class="col-gray-lighter"></p>
+                <button class="pill"></button>
+            </div>
+            
+            </div>
+            <div class="icon">
+            <i class="fas fa-exchange-alt"></i>
+            </div>
+        </div>
+        <div class="graph-a">
+            <div>
+            <h3>PROGRESS</h3>
+            </div>
+            <div class="progress col-gray-lighter flex">
+            <p></p>
+            <div class="progress-bar-container">
+            <span id="progress-bar"></span>
+            </div>
+            </div>
+            <div class="icon">
+            <i class="far fa-clock"></i>
+            </div>
+        </div>
+        </div>
+        
+        <div id="main-line-graph">
+        </div>
+        
+        <div id="balance-line" class='flex space-between'>
+        
+        <div id="balance-card" class="width-31">
+            <div class="card-title flex space-between">
+            <h3>Balance</h3>
+            <span><i class="fas fa-exclamation-circle"></i></span>
+            </div>
+            
+            <div class="balance-amount">
+            <p>$187,980</p>
+            </div>
+            <div class="flex width-100">
+            <div class="width-50 border-right">
+                <p>Last Month</p>
+                <p>12,560</p>
+            </div>
+            
+            <div class="width-50">
+            <p>This Month</p>
+                <p>12,560</p>
+            </div>
+            </div>
+            <div class="width-100">
+            <div class="balance-pill">
+            <button class="green">"+23.98%"</button>
+            </div>
+            </div>
+            
+        
+        </div>
+        
+        
+        
+        <div id="bar-chart-container" class="width-40">visitors bar chart</div>
+        
+        
+        <div class="width-23 flex-column space-between">
+            
+            <div id="score-container">score</div>
+            
+            <div id="from-blog">
+            <div><h3>FROM OUR BLOG<h3></div>
+                <p class="blog-title">Urgent! We updated<br></br> our ToS!</p>
+            <p class="snippet">Hello, we just <br></br> updated our tos...</p>
+            
+                <a href="#from-blog" class="read-more">READ MORE</a>
+            
+            
+            </div>
+        </div>
+        </div>
+    
+        
+        <div id="data-centers-line" class="flex space-between">
+        <div id="data-center-map" class="width-58 margin-auto">
+            <div id="us-map"></div>
+        </div>
+        
+        
+        <div class="width-40 flex-column space-between">
+            <div id="latest-commits-list">
+            
+            <div class="card-title flex space-between">
+                <h3>Latest Commits</h3>
+                <div>
+                <span><i class="fas fa-sync-alt"></i></span>   
+                <span><i class="fas fa-exclamation-circle"></i></span>
+                </div>
+            </div>
+            
+            <ol></ol>
+            </div>
+            
+            <div id="average-operation-time">
+            <div class="width-80 margin-auto">
+                <h3>Average Operataion Time</h3>
+            </div>
+            <div class="flex space-between width-80 margin-auto">
+                <div class="flex space-between width-50">
+                <p class="read">READ</p>
+                <p class="read-data"></p>
+                </div>
+                <div class="flex space-between width-50">
+                <p class="upload">UPLOAD</p>
+                <p class="upload-data"></p>
+                </div>
+            </div>
+            <div class="flex space-between width-80 margin-auto">
+                <div class="flex space-between width-50">
+                <p class="write">WRITE</p>
+                <p class="write-data"></p>
+                </div>
+                <div class="flex space-between width-50">
+                <p class='download'>DOWNLOAD</p>
+                <p class="download-data"></p>
+                </div>
+            </div>
+            
+            </div>
+        </div>
+        </div>
+        
+        <div id="latest-projects">
+        <div>
+            <h3>latest projects</h3>
+            
+        </div>
+        <table>
+            <tr class="table-headers">
+            <th>Name</th>
+            <th>Project</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            </tr>
+        </table> 
+        
+        </div>
+        
+        
+    </div>
+    
+    
+    <div id="footer">
+        <div class="site-margins padding-top-1rem">
+        <div class="flex space-between">
+            <div class="flex space-between footer-links width-40">
+            <p>Support</p>
+            <p>Help Center</p>
+            <p>Privacy</p>
+            <p>Terms of Service</p>
+            </div>
+            <div id="attribution">
+            <a href="https://piksl.co/">Design Template By @Piksl</a>
+            </div>
+        </div>
+        <div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

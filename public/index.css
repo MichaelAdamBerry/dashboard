@@ -1,0 +1,541 @@
+:root {
+  --gray: #67758d;
+  --gray-dark: #424b5f;
+  --gray-darker: #283040;
+  --gray-light: #97a4ba;
+  --gray-lighter: #c4cfdd;
+  --gray-lightest: #dee5ef;
+  --gray-darkest: #191d28;
+  --black: #000000;
+  --light-200: #eaf0f7;
+  --light: #f6f9fc;
+  --white: #ffffff;
+}
+
+body {
+  font-size: calc(14px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+}
+
+a,
+p {
+  font-size: 0.8rem;
+}
+
+a {
+  text-decoration: none;
+  text-decoration-color: none;
+}
+
+.site-margins {
+  margin: 0 10.42%;
+}
+
+#body {
+  font-family: "Montserrat", sans-serif;
+  width: 100vw;
+  font-size: 10px;
+  min-height: 100vh;
+  background-color: #212938;
+}
+
+#main {
+  min-height: 600px;
+}
+
+i {
+  color: var(--gray-dark);
+}
+
+.logo {
+  font-family: "Montserrat", sans-serif;
+  color: #d1eafc;
+  font-size: 1rem;
+  font-weight: 400;
+  display: inline-flex;
+  margin-left: 10.4vw;
+}
+
+.logo h1 {
+  padding-top: 0px;
+  margin-top: 0px;
+  display: inline-flex;
+}
+
+.logo,
+#user-info {
+  padding-top: 1rem;
+}
+
+.header-bottom-container {
+  min-height: 60px;
+  width: 100%;
+  background-image: linear-gradient(92deg, #0b5289, #094370);
+  box-shadow: 0 3px 10px -8px rgba(0, 0, 0, 0.24);
+}
+
+.header-bottom-container a {
+  color: #81accd;
+}
+
+a.selected {
+  color: #d4edff;
+}
+
+.header-bottom-container div:first-child {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 33%;
+}
+
+.header-current-location {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#footer {
+  width: 100%;
+  min-height: 84px;
+  background-color: var(--gray-darker);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.view-type {
+  color: var(--gray);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.view-title,
+.view-path {
+  color: var(--gray-light);
+  font-weight: 400;
+}
+.view-path span {
+  color: var(--gray-lightest);
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.col-gray-lighter {
+  color: var(--gray-lighter);
+}
+
+.space-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.graph-a {
+  background-color: var(--gray-darker);
+  width: 20%;
+  min-height: 60px;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0 5px 10px -10px rgba(0, 0, 0, 0.5);
+  border: solid 1px var(--gray-darker);
+}
+
+.tile-a {
+  margin-bottom: 2rem;
+}
+
+.graph-a span {
+  position: relative;
+  font-size: 2.5rem;
+}
+.graph-a div.icon {
+  position: absolute;
+  top: 0;
+  font-size: 2.5rem;
+}
+
+.graph-a i {
+  position: absolute;
+  text-align: right;
+  left: calc(100vw / 9);
+}
+
+.graph-a h3 {
+  color: var(--gray-light);
+  font-size: 0.65rem;
+  font-weight: 400;
+  margin-left: 0.5rem;
+}
+
+.budget-value button,
+.request-value button,
+#balance-card button {
+  height: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 16%;
+  color: var(--gray-lighter);
+}
+
+.red {
+  background-image: linear-gradient(113deg, #fc381d, #db2f18);
+}
+
+.green {
+  background-image: linear-gradient(113deg, #51c81c, #48af1b);
+}
+
+.graph-a p {
+  margin: 1rem;
+}
+
+.progress-bar-container {
+  margin-top: 1.4rem;
+  margin-left: 0;
+  display: inline-flex;
+  min-width: 10vw;
+  max-height: 0.4rem;
+  min-height: 0.4rem;
+  border-radius: 16px;
+  background-color: var(--gray-lightest);
+  position: relative;
+}
+
+#progress-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /*     min-width: calc(9vw * .78); */
+  min-height: 0.4rem;
+  border-radius: 16px;
+  background-image: linear-gradient(94deg, #3794fc, #237bdd);
+}
+
+#main-line-graph {
+  width: 100%;
+  background-color: var(--gray-darker);
+  margin-bottom: 2rem;
+}
+
+#balance-card,
+#bar-chart-container,
+#score-container,
+#from-blog,
+#data-center-map,
+#latest-commits-list,
+#latest-projects,
+#average-operation-time {
+  color: var(--gray-lighter);
+  min-height: 358px;
+  border-radius: 4px;
+  box-shadow: 0 5px 10px -10px rgba(0, 0, 0, 0.5);
+  border: solid 1px var(--gray-darker);
+  background-color: var(--gray-darker);
+}
+
+#score-container {
+  min-height: 129px;
+}
+
+#from-blog {
+  min-height: 193px;
+}
+
+#from-blog,
+#average-operation-time {
+  background-image: linear-gradient(126deg, #1d74a3, #3491f8);
+}
+
+#average-operation-time {
+  min-height: 149px;
+}
+
+#latest-commits-list {
+  min-height: 390px;
+}
+
+#data-center-map {
+  min-height: 571px;
+}
+
+#latest-projects {
+  min-height: 480px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+#balance-card div.border-right {
+  border-right: solid 1px var(--gray-dark);
+}
+
+#balance-card div.balance-amount p {
+  text-align: center;
+  font-size: 2rem;
+  color: #37c4fc;
+}
+#balance-card div.width-50 {
+  text-align: center;
+}
+
+.full {
+  width: 100%;
+  min-height: 450px;
+  background-color: var(--gray-darker);
+}
+
+.line div {
+  min-height: 200px;
+  min-width: 300px;
+  border: solid white;
+}
+
+.width-40 {
+  width: 40%;
+}
+
+.width-23 {
+  width: 23%;
+}
+
+.width-31 {
+  width: 31%;
+}
+
+.width-58 {
+  width: 58%;
+}
+
+.width-50 {
+  width: 50%;
+}
+.width-100 {
+  width: 100%;
+}
+.width-80 {
+  width: 80%;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.border-on {
+  border: solid white;
+}
+
+#user-info {
+  display: inline-flex;
+  margin-right: calc(10.4vw + 32px);
+}
+
+#user-info p {
+  /*   display: inline-flex; */
+  color: var(--gray-light);
+  font-size: 0.8em;
+  margin-top: 0.2em;
+  margin-left: 0.2em;
+}
+
+#user-info i {
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+#user-info img {
+  position: absolute;
+  left: 1rem;
+  border-radius: 50%;
+}
+
+#user-info span:last-child {
+  position: relative;
+}
+
+.balance-pill {
+  display: flex;
+  justify-content: center;
+}
+
+#balance-card div.balance-pill button {
+  height: 3rem;
+  width: 7rem;
+  border-radius: 20px;
+  font-size: 1rem;
+}
+
+.card-title h3 {
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+
+.card-title span {
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+#balance-line {
+  margin-bottom: 1rem;
+}
+
+#latest-commits-list ol {
+  padding-left: 0;
+  color: var(--gray);
+  margin-top: 0;
+}
+
+#latest-commits-list li {
+  display: flex;
+  justify-content: space-between;
+}
+
+#latest-commits-list li .fas {
+  margin-top: 0.5rem;
+}
+
+#latest-commits-list li:nth-child(odd) {
+  background-color: rgba(246, 249, 252, 0.03);
+}
+
+#latest-commits-list li .message {
+  width: 60%;
+  margin-left: 2rem;
+  color: var(--gray-lighter);
+}
+
+#average-operation-time h3 {
+  font-size: 1.4rem;
+  color: white;
+  margin-bottom: 0;
+}
+#average-operation-time p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+#average-operation-time .write {
+  color: #a6ff00;
+}
+
+#average-operation-time .download,
+#average-operation-time .read {
+  color: #00ffff;
+}
+#average-operation-time .upload {
+  color: #fab7aa;
+}
+.read-data,
+.write-data {
+  margin-right: 1.5rem;
+}
+
+.upload-data,
+.download-data {
+  margin-left: 1.5rem;
+}
+
+h3 {
+  font-weight: 400;
+}
+
+a {
+  cursor: pointer;
+}
+#from-blog div,
+#from-blog p,
+#from-blog a {
+  margin-left: 1.5rem;
+}
+
+#from-blog h3 {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 0.8rem;
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+#from-blog p.blog-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  line-height: 0.8rem;
+}
+
+#from-blog p.snippet {
+  font-size: 0.7em;
+  color: #97d4f0;
+  line-height: 0.8rem;
+}
+
+#from-blog a.read-more {
+  color: #51fbec;
+  font-size: 0.9rem;
+}
+
+#from-blog a {
+  text-decoration: none;
+  color: #51fbec;
+}
+
+#latest-projects table {
+  width: 100%;
+  font-size: 1rem;
+}
+#latest-projects th {
+  text-align: left;
+  padding-left: 1rem;
+}
+
+#latest-projects td {
+  text-align: left;
+  padding-left: 1rem;
+  color: var(--gray-light);
+}
+
+#latest-projects tr {
+  border-radius: 4px;
+  box-shadow: 0 5px 10px -10px rgba(0, 0, 0, 0.5);
+  border: solid 1px var(--gray-darker);
+  background-color: var(--gray-darker);
+}
+
+#latest-projects h3 {
+  margin-left: 1rem;
+  font-size: 1.2rem;
+}
+
+#latest-projects th,
+#latest-projects td {
+  padding: 1rem 0;
+}
+
+#latest-projects table .table-headers {
+  box-shadow: 0 5px 10px -10px rgba(0, 0, 0, 0.5);
+  border: solid 1px var(--gray-darker);
+  background-color: rgba(66, 75, 95, 0.18);
+}
+
+.footer-links {
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+#attribution a {
+  color: var(--gray-light);
+}
+
+.padding-top-1rem {
+  padding-top: 1rem;
+}
+
+#us-map {
+  width: 500px;
+  margin: auto;
+}
