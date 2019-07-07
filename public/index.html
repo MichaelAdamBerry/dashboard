@@ -16,7 +16,7 @@
     <div id="body">
     <header>
         <div class="header-top-container flex space-between">
-        <div class="logo"><h1>Logo</h1></div>
+        <div class="logo"><h1>DataViews</h1></div>
         <div id="user-info">
             <span class="mail-icon">
             <i class="fas fa-envelope"></i>
@@ -147,13 +147,18 @@
             <button class="green">"+23.98%"</button>
             </div>
             </div>
-            
-        
         </div>
         
-        
-        
-        <div id="bar-chart-container" class="width-40">visitors bar chart</div>
+        <div id="bar-chart-container" class="width-40">
+            <div class="margin-auto flex space-between card-title">
+                <h3>Visitors</h3>
+                <span>
+                        <i class="fas fa-sync-alt"></i>
+                        <i class="fas fa-exclamation-circle"></i>
+                </span>
+            </div>
+            <div class="margin-auto" id="bar-chart"></div>
+        </div>
         
         
         <div class="width-23 flex-column space-between">
@@ -175,7 +180,32 @@
         
         <div id="data-centers-line" class="flex space-between">
         <div id="data-center-map" class="width-58 margin-auto">
+            <div class="card-title flex space-between">
+                <h3>Data Centers</h3>                
+                <span>
+                    <i class="fas fa-sync-alt"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                </span>
+            </div>
             <div id="us-map"></div>
+            <div class="flex space-between width-80 margin-auto">
+                <div>
+                    <p>San Fransisco</p>
+                    <p class='abrv'>CA</p>
+                </div>
+                <div>
+                    <p>Austin</p>
+                    <p class='abrv'>TX</p>
+                </div>
+                <div>
+                    <p>Helena</p>
+                    <p class='abrv'>MT</p>
+                </div>
+                <div>
+                    <p>Raleigh</p>
+                    <p class='abrv'>NC</p>
+                </div>
+            </div>
         </div>
         
         
@@ -225,7 +255,6 @@
         <div id="latest-projects">
         <div>
             <h3>latest projects</h3>
-            
         </div>
         <table>
             <tr class="table-headers">
@@ -262,6 +291,8 @@
     </div>
     </div>
     <script type="module" src="./index.js"></script>
+    <script type="module" src="./data/random.js"></script>
     <script type="module" src="./charts/p5-canvas-map.js"></script>
+    <script type="module" src="./charts/charts.js"></script>
   </body>
 </html>

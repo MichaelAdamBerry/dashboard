@@ -33,7 +33,6 @@ a {
 #body {
   font-family: "Montserrat", sans-serif;
   width: 100vw;
-  font-size: 10px;
   min-height: 100vh;
   background-color: #212938;
 }
@@ -240,6 +239,10 @@ a.selected {
   background-color: var(--gray-darker);
 }
 
+#bar-chart-container {
+  max-width: 360px;
+}
+
 #score-container {
   min-height: 129px;
 }
@@ -329,12 +332,13 @@ a.selected {
 #user-info {
   display: inline-flex;
   margin-right: calc(10.4vw + 32px);
+  font-size: 1rem;
 }
 
 #user-info p {
   /*   display: inline-flex; */
   color: var(--gray-light);
-  font-size: 0.8em;
+
   margin-top: 0.2em;
   margin-left: 0.2em;
 }
@@ -373,7 +377,11 @@ a.selected {
 
 .card-title span {
   font-size: 1rem;
-  margin-top: 1rem;
+  margin: 1rem 1rem 0 0;
+}
+
+#data-center-map i,
+#bar-chart-container i {
   margin-right: 1rem;
 }
 
@@ -487,6 +495,12 @@ a {
 #latest-projects th {
   text-align: left;
   padding-left: 1rem;
+  color: var(--light-200);
+  font-weight: 400;
+}
+
+#latest-projects th:first-child {
+  padding-left: 1rem;
 }
 
 #latest-projects td {
@@ -534,5 +548,27 @@ a {
 #us-map {
   width: 500px;
   margin: auto;
-  padding: 75px 0;
+}
+
+#data-center-map p.abrv {
+  color: var(--gray);
+}
+#data-center-map p {
+  color: var(--gray-lighter);
+  margin-top: 0;
+}
+
+#bar-chart svg {
+  fill: var(--gray);
+  stroke: var(--gray);
+}
+
+#bar-chart svg path {
+  stroke: none;
+  fill: none;
+}
+
+#bar-chart svg line {
+  stroke: none;
+  fill: none;
 }
