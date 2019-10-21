@@ -8,7 +8,7 @@ Based on [this template](https://sketchrepo.com/free-sketch/dark-dashboard-templ
 - Node 
 - Express
 
-![Main full width line chart](https://res.cloudinary.com/dscjol9s7/image/upload/v1571689255/samples/data-views/Screen_Shot_2019-10-21_at_4.20.06_PM_xaxear.png)
+![Main full width line chart](https://res.cloudinary.com/dscjol9s7/image/upload/v1571689255/samples/data-views/Screen_Shot_2019-10-21_at_4.19.45_PM_zmocwr.png)
 ![windows of charts & infographics including a barchart, a geographical bubbble chart](https://res.cloudinary.com/dscjol9s7/image/upload/v1571689255/samples/data-views/Screen_Shot_2019-10-21_at_4.20.06_PM_xaxear.png)
 ![list of users and data associated with their workflow](https://res.cloudinary.com/dscjol9s7/image/upload/v1571689255/samples/data-views/Screen_Shot_2019-10-21_at_4.20.18_PM_lv8cba.png)
 
